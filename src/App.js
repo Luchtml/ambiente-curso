@@ -3,12 +3,12 @@ import React from 'react';
 const App = () => {
   const [comentarios, setComentarios] = React.useState([]);
   const [input, setInput] = React.useState('');
-  const inputElement = React.useRef()
+  const inputElement = React.useRef();
 
   function handleClick() {
-    setComentarios([...comentarios, input])
-    setInput('')
-    inputElement.current.focus()
+    setComentarios([...comentarios, input]);
+    setInput('');
+    inputElement.current.focus();
   }
 
   return (
