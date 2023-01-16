@@ -55,17 +55,17 @@ const App = () => {
         ...acc,
         [field.id]: '',
       };
-    }, {}),
+    }),
   );
+
+  function handleChange({target}) {
+    const { id, value } = target
+    setForm({...form, [id]: value})
+  }
 
   const [response, setResponse] = React.useState(null);
 
-  function handleChange({ target }) {
-    const { id, value } = target;
-    setForm({ ...form, [id]: value });
-  }
-
-  function onSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     fetch('https://ranekapi.origamid.dev/json/api/usuario/', {
       method: 'POST',
@@ -77,21 +77,14 @@ const App = () => {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      {formFields.map(({ id, type, label }) => {
-        return (
-          <div key={id}>
-            <label htmlFor={id}>{label}</label>
-            <input
-              type={type}
-              id={id}
-              onChange={handleChange}
-              value={form[id]}
-            />
-          </div>
-        );
-      })}
-      {response && response.ok && <p>Formúlario enviado...</p>}
+    <form onSubmit={handleSubmit}>
+      {formFields.map(({ id, label, type }) => (
+        <div key={id}>
+          <label htmlFor={id}>{label}</label>
+          <input type={type} id={id} value={form[id]} onChange={handleChange}/>
+        </div>
+      ))}
+      {response && response.ok && <p>Formulário Enviado</p>}
       <button>Enviar</button>
     </form>
   );
