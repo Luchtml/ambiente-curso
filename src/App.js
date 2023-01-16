@@ -1,9 +1,19 @@
-import React from 'react'
+import React from 'react';
 
 const App = () => {
+  const [textarea, setTextarea] = React.useState('');
   return (
-    <div>App</div>
-  )
-}
+    <form>
+      <textarea
+        rows="10"
+        value={textarea}
+        onChange={({ target }) => {
+          setTextarea(target.value);
+        }}
+      />
+      {textarea}
+    </form>
+  );
+};
 
-export default App
+export default App;
