@@ -37,6 +37,7 @@ const perguntas = [
 ];
 
 const App = () => {
+//resposta que será setada de acordo com o click do usuário nas opções
   const [respostas, setRespostas] = React.useState({
     p1: '',
     p2: '',
@@ -45,25 +46,31 @@ const App = () => {
   });
 
   function resultadoFinal() {
+//Filtro para somar e mostrar o resultado das questões corretas
     const corretas = perguntas.filter(
       ({ id, resposta }) => respostas[id] === resposta,
     );
     setResultado(`Você acertou: ${corretas.length} de ${perguntas.length}`);
   }
 
+//função do botão para avançar a próxima pergunta
   function handleClick() {
     if (slide < perguntas.length - 1) {
       setSlide(slide + 1);
     } else {
+//avançar e evocar a função resultado final
       setSlide(slide + 1);
       resultadoFinal();
     }
   }
 
+//Slide tem uma verificação para saber se é igual ao index, retornando um boolean
   const [slide, setSlide] = React.useState(0);
+
   const [resultado, setResultado] = React.useState(null);
 
   function handleChange({ target }) {
+//Resposta será um objeto com o resultado das perguntas e a resposta clicada
     setRespostas({ ...respostas, [target.id]: target.value });
   }
 
