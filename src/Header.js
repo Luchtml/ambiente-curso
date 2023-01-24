@@ -1,7 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 // import './Header.css';
 const Header = () => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    console.log('Mudou a rota');
+  }, [location]);
+
   return (
     <nav style={{ width: '100vw', background: '#eee' }}>
       <NavLink to="/" activeStyle={{ color: 'tomato' }} end>

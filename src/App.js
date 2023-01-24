@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Produto from './Produto';
 import Footer from './Footer';
 import Header from './Header';
 import Home from './Home';
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="sobre" element={<Sobre />} />
         <Route path="login" element={<Login />} />
+        <Route path="produto/:id" element={<Produto />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
