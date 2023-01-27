@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
+// import Contato from "./Contato";
+const Contato = React.lazy(() => import("./Contato"));
 
 const App = () => {
+  const [ativo, setAtivo] = React.useState(false);
   return (
-    <div>App</div>
-  )
-}
+    <div>
+      {ativo && (
+        <React.Suspense fallback={<div>Carregando...</div>}>
+          <Contato />
+        </React.Suspense>
+      )}
+      <button onClick={() => {
+        return setAtivo(true)
+      }}>mudar</button>
+    </div>
+  );
+};
 
-export default App
+export default App;
