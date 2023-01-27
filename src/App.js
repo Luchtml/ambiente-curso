@@ -1,8 +1,11 @@
 import React from 'react'
+import Button from './Button'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <Button width={300}>Clique aqui</Button>
+    </div>
   )
 }
 
